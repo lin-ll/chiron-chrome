@@ -74,9 +74,9 @@ function parseAjax(word, toReturn) {
   resultFound = perseus.find('.lemma').html(); // will be undefined if perseus finds no results
   if (resultFound) {
     var header = lemma.find('.lemma_header').prop('outerHTML');
-        table = lemma.find('table').addClass('paideia-table').prop('outerHTML');
-    insertDiv('<div id="paideia-panel">' + header + "<br />" + table + anotherDictionary(word) + thanks + '</div>');
-    $('#paideia-panel').click(rmPanel);
+    table = lemma.find('table').addClass('paideia-table').prop('outerHTML');
+    insertDiv('<div id="paideia-panel"><button id="remove" style="float: right;">X</button>' + header + "<br />" + table + anotherDictionary(word) + thanks + '</div>');
+    $('#remove').click(rmPanel);
   } 
   else manualSearch(word);
 }
