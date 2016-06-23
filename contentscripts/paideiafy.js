@@ -47,7 +47,8 @@ function anotherDictionary (word) {
   return '<p>Try this word in another dictionary: </p>' +
     '<ul class="another-dict">' +
       '<li><a target="_blank" href="http://logeion.uchicago.edu/index.html#'+ word + '">Logeion</a></li>' +
-      '<li><a target="_blank" href="http://www.perseus.tufts.edu/hopper/resolveform?type=exact&lookup=&lang=greek">Perseus LSJ</a></li>' +
+      '<li><a target="_blank" href="http://www.perseus.tufts.edu/hopper/resolveform?type=exact&lookup=' + 
+        word + '&lang=' + lang + '">Perseus LSJ</a></li>' + 
     '</ul>'
 };
 
@@ -107,8 +108,9 @@ function parseAjax(word, toReturn) {
   resultFound = perseus.find('.lemma').html(); // will be undefined if perseus finds no results
   if (resultFound) {
     var header = lemma.find('.lemma_header').prop('outerHTML');
-    var def = lemma.find('.lemma_definition')[0];
-    saved += word + '\t' + def.innerHTML.trim() + '\n';
+    var def = lemma.find('.lemma_definition')[0].innerHTML;
+    var word_saved = lemma.find('.' + lang)[0].innerHTML;
+    saved += word_saved + '\t' + def.trim() + '\n';
     console.log(saved);
     table = lemma.find('table').addClass('paideia-table').prop('outerHTML');
     insertDiv('<div id="paideia-panel"><button id="remove" style="float: right;">X</button>' + header + "<br />" + table + anotherDictionary(word) + thanks + '</div>');
