@@ -1,8 +1,7 @@
 /* ********
   AUTHOR: Lachlan Kermode
   DATE: 25 February 2016 (Thursday)
-  DESCRIPTION: 
-    enable double click to transform selected word into either greek or latin
+  DESCRIPTION: enable double click to transform selected word into either greek or latin
   NOTES:
     jquery preloaded in 'manifest.json'
 
@@ -120,21 +119,22 @@ function parseAjax(word, toReturn) {
 }
 
 function paidieaify(word, language) {
-  var langCode = 'la'; // latin by default
-  if (language == 'greek') langCode = 'greek';
+  // var langCode = 'la'; // latin by default
+  // if (language == 'greek') langCode = 'greek';
 
   console.log("before ajax");
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) parseAjax(word, xhttp.responseText);
   };
-  xhttp.open("GET", 'http://www.perseus.tufts.edu/hopper/morph?l='+ word + '&la='+langCode, true);
+  xhttp.open("GET", 'http://www.perseus.tufts.edu/hopper/morph?l='+ word + '&la='+lang, true);
   xhttp.setRequestHeader("cache-control", "no-cache");
   xhttp.send();
 }
 
 function runPaideiaChromium(language) {
   lang = language;
+  if (lang == "latin") lang = "la";
   if (event == 0) {
     event = 1;
     document.body.addEventListener('dblclick', function(info) {
