@@ -28,5 +28,9 @@
     "css":["contentscripts/my.css"],
     "js":["jquery-1.11.1.min.js", "contentscripts/paideiafy.js"]
   }],
+  "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
   "manifest_version": 2
 }

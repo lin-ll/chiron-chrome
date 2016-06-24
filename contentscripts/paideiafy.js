@@ -60,8 +60,8 @@ function insertDiv(child) {
   var div = document.createElement('div');
   div.setAttribute('id', 'paideia-panel');
   div.setAttribute('style', 'position: fixed; top: 1em; right: 1em; padding: 10px 20px; '
-    +'border: 1px solid #007095; border-radius: 2em; max-width: 34em;'
-    +' word-wrap: break-word; background-color: aliceblue; z-index:999;');
+    +'border: 1px solid #007095; border-radius: 2em; max-width: 34em; max-height: 400px; '
+    + 'overflow: scroll; word-wrap: break-word; background-color: aliceblue; z-index:999;');
 
   rmPanel()
 
@@ -119,17 +119,9 @@ function parseAjax(word, toReturn) {
 }
 
 function paidieaify(word, language) {
-  // var langCode = 'la'; // latin by default
-  // if (language == 'greek') langCode = 'greek';
-
   console.log("before ajax");
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (xhttp.readyState == 4 && xhttp.status == 200) parseAjax(word, xhttp.responseText);
-  };
-  xhttp.open("GET", 'http://www.perseus.tufts.edu/hopper/morph?l='+ word + '&la='+lang, true);
-  xhttp.setRequestHeader("cache-control", "no-cache");
-  xhttp.send();
+  var url = 'http://www.perseus.tufts.edu/hopper/morph?l='+ word + '&la='+lang;
+  chrome.runtime.sendMessage(url, function(responseText) { parseAjax(word, responseText); });
 }
 
 function runPaideiaChromium(language) {
