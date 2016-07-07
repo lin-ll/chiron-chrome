@@ -2,7 +2,7 @@
   "name": "Chiron Dictionary",
   "short_name":"Chiron",
   "description": "Look up Latin or Greek words directly in your webpage.",
-  "version": "1.0.1",
+  "version": "1.0.1.1",
   "icons": {
     "16": "paideia-favicon.png",
     "48": "paideia-favicon.png",

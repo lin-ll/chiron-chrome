@@ -1,4 +1,4 @@
-#copy, #go-quizlet, #remove {
+#copy, #go-quizlet, #remove2 {
   align-items: flex-start !important;
   text-align: center !important;
   cursor: default !important;
@@ -26,7 +26,7 @@
   -webkit-writing-mode: horizontal-tb !important;
   -webkit-appearance: button !important;
 }
-#copy:active, #go-quizlet:active, #remove:active {
+#copy:active, #go-quizlet:active, #remove2:active {
   background-color: gray !important;
 }
 .container {
